@@ -1,4 +1,5 @@
 # Node template
+node_modules/
 
 # Logs
 logs
