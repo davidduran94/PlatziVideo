@@ -1,12 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { logoutRequest } from '../actions'
 import '../assets/styles/components/Header.scss';
 import logo from '../assets/static/logo-platzi-video-BW2.png';
 import userIcon from '../assets/static/user-icon.png';
 
 const Header = props => {
   const { user } = props
+  const hasUser = Object.keys(user).length > 0;
+
+  const handleLogout = () => {
+    props.logoutRequest({})
+    props.history.push('/login')
+  }
 
   return (
     <header className="header">
@@ -20,10 +27,23 @@ const Header = props => {
           <p>{user.email}</p>
         </div>
         <ul>
-          <li><a href="/">Cuenta</a></li>
-          <Link to="/login">
-            <li>Cerrar Sesión</li>
-          </Link>
+          {
+            hasUser ? 
+              <li><a href="#">{user.email}</a></li>
+            : null
+          }
+          {
+            hasUser ? 
+              <li>
+                <a href="#" onClick={handleLogout}>Cerrar Sesión</a>
+              </li>
+              : 
+              <Link to="/login">
+                <li>Iniciar Sesión</li>
+              </Link> 
+          }
+          
+          
         </ul>
       </div>
     </header>
@@ -35,5 +55,8 @@ const mapStateToProps = state => {
     user: state.user
   }
 }
+const mapDispatchToProps = {
+  logoutRequest
+}
 
-export default connect(mapStateToProps, null)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

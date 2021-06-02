@@ -20,6 +20,12 @@ const reducer = (state, action) => {
                 user : action.payload
             }
 
+        case 'LOGIN_REQUEST' :
+            return {
+                ...state,
+                user : action.payload
+            }
+
         default:
             return state;
             
