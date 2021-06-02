@@ -14,3 +14,10 @@ export const delFavorite = (payload) => (
     }
 );
 
+export const loginRequest = (payload) => (
+    {
+        type: 'LOGIN_REQUEST',
+        payload: payload
+    }
+);
+
