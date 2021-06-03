@@ -29,3 +29,10 @@ export const logoutRequest = (payload) => (
     }
 );
 
+export const registerRequest = (payload) => (
+    {
+        type: 'REGISTER_REQUEST',
+        payload: payload
+    }
+);
+

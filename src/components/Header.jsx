@@ -10,9 +10,10 @@ const Header = props => {
   const { user } = props
   const hasUser = Object.keys(user).length > 0;
 
-  const handleLogout = () => {
+  const handleLogout = (evt) => {
+    evt.preventDefault();
     props.logoutRequest({})
-    props.history.push('/login')
+    //props.history.push('/login')
   }
 
   return (
