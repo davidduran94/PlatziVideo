@@ -3,6 +3,7 @@ import '../assets/styles/Register.scss'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { registerRequest } from '../actions'
+import Header from '../components/Header';
 
 const Register = (props) => {
 	const [form, setValues] = useState({
@@ -26,29 +27,32 @@ const Register = (props) => {
 	}
 
 	return (
-    <section className='register'>
-		<section className='register__container'>
-			<h2>Regístrate</h2>
-			<form className='register__container--form' onSubmit={handleSubmit} >
-				<input 
-					onChange={handleInput}
-					name="name" className='input' 
-					type='text' placeholder='Nombre' />
-				<input 
-					onChange={handleInput}
-					name="email" className='input' 
-					type='text' placeholder='Correo' />
-				<input 
-					onChange={handleInput}
-					name="password" className='input' 
-					type='password' placeholder='Contraseña' />
-				<button type="submit" className='button'>Registrarme</button>
-			</form>
-			<Link to="/login">
-				Iniciar sesión
-			</Link>
-		</section>
-	</section>
+		<>
+			<Header isRegister />
+			<section className='register'>
+				<section className='register__container'>
+					<h2>Regístrate</h2>
+					<form className='register__container--form' onSubmit={handleSubmit} >
+						<input 
+							onChange={handleInput}
+							name="name" className='input' 
+							type='text' placeholder='Nombre' />
+						<input 
+							onChange={handleInput}
+							name="email" className='input' 
+							type='text' placeholder='Correo' />
+						<input 
+							onChange={handleInput}
+							name="password" className='input' 
+							type='password' placeholder='Contraseña' />
+						<button type="submit" className='button'>Registrarme</button>
+					</form>
+					<Link to="/login">
+						Iniciar sesión
+					</Link>
+				</section>
+			</section>
+		</>
 
 )};
 
